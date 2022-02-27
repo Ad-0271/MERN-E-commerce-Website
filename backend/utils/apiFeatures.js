@@ -35,7 +35,7 @@ class ApiFeatures {
   }
 
   pagination() {
-    const resultPerPage = 5;
+    const resultPerPage = 8;
 
     const currentPage = +this.queryStr.page || 1;
 

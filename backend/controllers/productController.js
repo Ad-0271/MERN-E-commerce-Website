@@ -14,16 +14,27 @@ const getOne = catchAsyncErrors(async (req, res, next) => {
 });
 
 const getAll = catchAsyncErrors(async (req, res, next) => {
-  const productCount = await Product.countDocuments();
+  const productsCount = await Product.countDocuments();
 
   const apiFeatures = new ApiFeatures(Product.find(), req.query)
     .search()
-    .filter()
-    .pagination();
+    .filter();
 
-  const items = await apiFeatures.result;
+  let items = await apiFeatures.result;
 
-  return res.status(200).send({ status: "success", productCount, items });
+  const filteredProductsCount = items.length;
+
+  apiFeatures.pagination();
+
+  items = await apiFeatures.result;
+
+  return res.status(200).send({
+    status: "success",
+    productsCount,
+    items,
+    filteredProductsCount,
+    resultPerPage: 8,
+  });
 });
 
 const post = catchAsyncErrors(async (req, res, next) => {

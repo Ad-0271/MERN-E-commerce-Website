@@ -1,6 +1,6 @@
 .banner {
   background-image: linear-gradient(to right, #3db2ff, #001e6c);
-  height: 100vmin;
+  height: 90vmin;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -20,6 +20,7 @@
   cursor: pointer;
   background-color: white;
   border: 1px solid white;
+  color: rgb(48, 48, 48);
   border-radius: 0;
   padding: 1vmax;
   transition: all 0.5s;
